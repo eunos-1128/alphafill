@@ -148,9 +148,13 @@ if(NOT zeep_FOUND)
 	FetchContent_MakeAvailable(zeep)
 endif()
 
+if(TARGET zeep AND NOT TARGET zeep::zeep)
+  add_library(zeep::zeep ALIAS zeep)
+endif()
+
 if(BUILD_WEB_APPLICATION)
 	find_package(libpqxx 7.8.0 QUIET)
-	
+
 	if(NOT libpqxx_FOUND)
 		FetchContent_Declare(
 			libpqxx
