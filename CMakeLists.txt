@@ -148,10 +148,6 @@ if(NOT zeep_FOUND)
 	FetchContent_MakeAvailable(zeep)
 endif()
 
-if(TARGET zeep AND NOT TARGET zeep::zeep)
-  add_library(zeep::zeep ALIAS zeep)
-endif()
-
 if(TARGET zeep-http AND NOT TARGET zeep::http)
   add_library(zeep::http ALIAS zeep-http)
 endif()
