@@ -138,7 +138,7 @@ if(NOT mcfp_FOUND)
 	FetchContent_MakeAvailable(mcfp)
 endif()
 
-find_package(zeep 6.0.16 QUIET)
+find_package(zeep 6.0.16 QUIET COMPONENTS http)
 
 if(NOT zeep_FOUND)
 	FetchContent_Declare(
@@ -150,6 +150,10 @@ endif()
 
 if(TARGET zeep AND NOT TARGET zeep::zeep)
   add_library(zeep::zeep ALIAS zeep)
+endif()
+
+if(TARGET zeep-http AND NOT TARGET zeep::http)
+  add_library(zeep::http ALIAS zeep-http)
 endif()
 
 if(BUILD_WEB_APPLICATION)
